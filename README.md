@@ -1,199 +1,182 @@
 <div align="center">
     <img src="./media/logo_small.webp"/>
     <h1>🌱 Spec Kit</h1>
-    <h3><em>Build high-quality software faster.</em></h3>
+    <h3><em>高品質なソフトウェアをより速く構築しましょう。</em></h3>
 </div>
 
 <p align="center">
-    <strong>An effort to allow organizations to focus on product scenarios rather than writing undifferentiated code with the help of Spec-Driven Development.</strong>
+    <strong>Spec-Driven Development（仕様駆動開発）の力を借りて、組織が非差別化コードの記述ではなくプロダクトシナリオに集中できるようにする取り組みです。</strong>
 </p>
 
 [![Release](https://github.com/github/spec-kit/actions/workflows/release.yml/badge.svg)](https://github.com/github/spec-kit/actions/workflows/release.yml)
 
 ---
 
-## Table of Contents
+## 目次
 
-- [🤔 What is Spec-Driven Development?](#-what-is-spec-driven-development)
-- [⚡ Get started](#-get-started)
-- [📚 Core philosophy](#-core-philosophy)
-- [🌟 Development phases](#-development-phases)
-- [🎯 Experimental goals](#-experimental-goals)
-- [🔧 Prerequisites](#-prerequisites)
-- [📖 Learn more](#-learn-more)
-- [Detailed process](#detailed-process)
-- [Troubleshooting](#troubleshooting)
+- [🤔 Spec-Driven Developmentとは？](#-spec-driven-developmentとは)
+- [⚡ はじめ方](#-はじめ方)
+- [📚 コア哲学](#-コア哲学)
+- [🌟 開発フェーズ](#-開発フェーズ)
+- [🎯 実験的な目標](#-実験的な目標)
+- [🔧 前提条件](#-前提条件)
+- [📖 詳しく知る](#-詳しく知る)
+- [詳細プロセス](#詳細プロセス)
+- [トラブルシューティング](#トラブルシューティング)
 
-## 🤔 What is Spec-Driven Development?
+## 🤔 Spec-Driven Developmentとは？
 
-Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
+Spec-Driven Development（仕様駆動開発）は、従来のソフトウェア開発とは逆の発想です。長年にわたり、コードが主役でしたが、仕様書は「本番」の作業の足場として作られ、すぐに捨てられる存在でした。Spec-Driven Developmentは「何を作るか」「なぜ作るか」を重視し、仕様がプロダクトの中心となります。
 
-## ⚡ Get started
+## ⚡ はじめ方
 
-### 1. Install Specify
+### 1. Specifyのインストール
 
-Initialize your project depending on the coding agent you're using:
+使用するコーディングエージェントに応じてプロジェクトを初期化します。
 
 ```bash
 uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME>
 ```
 
-### 2. Create the spec
+### 2. 仕様書の作成
 
-Use the `/specify` command to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
-
-```bash
-/specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums never other nested albums. Within each album, photos are previewed in a tile-like interface.
-```
-
-### 3. Create a technical implementation plan
-
-Use the `/plan` command to provide your tech stack and architecture choices.
+`/specify` コマンドで作りたいものを記述します。技術スタックではなく、**何を、なぜ作るか**に集中しましょう。
 
 ```bash
-/plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
+/specify 写真をアルバムごとに整理するアプリケーションを作りたい。アルバムは日付ごとにグループ化され、メインページでドラッグ＆ドロップで再編成できる。アルバムは決して消えない。[...]
 ```
 
-### 4. Break down and implement
+### 3. 技術実装計画の作成
 
-Use `/tasks` to create an actionable task list, then ask your agent to implement the feature.
+`/plan` コマンドで技術スタックやアーキテクチャの方針を記述します。
 
-For detailed step-by-step instructions, see our [comprehensive guide](./spec-driven.md).
+```bash
+/plan アプリケーションはViteを使い、ライブラリは最小限に抑える。できるだけバニラHTML、CSS、JavaScriptを使用する。画像はアップロードせず、メタデータはローカルSQLiteデータベースに保存する。[...]
+```
 
-## 📚 Core philosophy
+### 4. 分割と実装
 
-Spec-Driven Development is a structured process that emphasizes:
+`/tasks` で実行可能なタスクリストを作成し、エージェントに実装を依頼しましょう。
 
-- **Intent-driven development** where specifications define the "_what_" before the "_how_"
-- **Rich specification creation** using guardrails and organizational principles
-- **Multi-step refinement** rather than one-shot code generation from prompts
-- **Heavy reliance** on advanced AI model capabilities for specification interpretation
+詳細な手順は[総合ガイド](./spec-driven.md)をご覧ください。
 
-## 🌟 Development phases
+## 📚 コア哲学
 
-| Phase | Focus | Key Activities |
+Spec-Driven Developmentは以下の原則を重視します：
+
+- **意図駆動開発**：仕様が「何を」定義し、「どうやって」は後から決定
+- **豊かな仕様作成**：ガードレールや組織的原則に基づく仕様化
+- **多段階の洗練**：プロンプト一発ではなく段階的な洗練
+- **AIモデルの高度な活用**：仕様解釈にAIの力を活用
+
+## 🌟 開発フェーズ
+
+| フェーズ | フォーカス | 主な活動 |
 |-------|-------|----------------|
-| **0-to-1 Development** ("Greenfield") | Generate from scratch | <ul><li>Start with high-level requirements</li><li>Generate specifications</li><li>Plan implementation steps</li><li>Build production-ready applications</li></ul> |
-| **Creative Exploration** | Parallel implementations | <ul><li>Explore diverse solutions</li><li>Support multiple technology stacks & architectures</li><li>Experiment with UX patterns</li></ul> |
-| **Iterative Enhancement** ("Brownfield") | Brownfield modernization | <ul><li>Add features iteratively</li><li>Modernize legacy systems</li><li>Adapt processes</li></ul> |
+| **0→1開発**（グリーンフィールド） | ゼロから構築 | <ul><li>高レベル要件からスタート</li><li>仕様書の作成</li><li>実装計画の立案</li><li>本番コードの構築</li></ul> |
+| **創造的探求** | 並列実装 | <ul><li>多様なソリューションの探求</li><li>複数技術スタック・アーキテクチャのサポート</li><li>UXパターンの実験</li></ul> |
+| **反復的改善**（ブラウンフィールド） | レガシーの近代化 | <ul><li>機能追加の反復</li><li>レガシーシステムの近代化</li><li>プロセスの適応</li></ul> |
 
-## 🎯 Experimental goals
+## 🎯 実験的な目標
 
-Our research and experimentation focus on:
+研究・実験のフォーカス：
 
-### Technology independence
+### 技術独立性
 
-- Create applications using diverse technology stacks
-- Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks
+- 多様な技術スタックでアプリケーションを作成
+- Spec-Driven Developmentが技術・言語・フレームワークに依存しないプロセスであることを検証
 
-### Enterprise constraints
+### 企業制約
 
-- Demonstrate mission-critical application development
-- Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)
-- Support enterprise design systems and compliance requirements
+- ミッションクリティカルなアプリケーションの開発
+- 組織的制約（クラウド、技術、エンジニアリング習慣）の取り込み
+- 企業向けデザインシステムやコンプライアンス要件への対応
 
-### User-centric development
+### ユーザー中心開発
 
-- Build applications for different user cohorts and preferences
-- Support various development approaches (from vibe-coding to AI-native development)
+- 多様なユーザー層・嗜好に合わせたアプリケーション作成
+- コーディングアプローチの多様性（バイブコーディング～AIネイティブ開発）
 
-### Creative & iterative processes
+### 創造的＆反復的プロセス
 
-- Validate the concept of parallel implementation exploration
-- Provide robust iterative feature development workflows
-- Extend processes to handle upgrades and modernization tasks  
+- 並列実装探求の概念検証
+- 強力な反復的機能開発ワークフローの提供
+- アップグレードや近代化タスクへのプロセス拡張
 
-## 🔧 Prerequisites
+## 🔧 前提条件
 
-- **Linux/macOS** (or WSL2 on Windows)
-- AI coding agent: [Claude Code](https://www.anthropic.com/claude-code), [GitHub Copilot](https://code.visualstudio.com/), or [Gemini CLI](https://github.com/google-gemini/gemini-cli)
-- [uv](https://docs.astral.sh/uv/) for package management
+- **Linux/macOS**（またはWindows上のWSL2）
+- AIコーディングエージェント：[Claude Code](https://www.anthropic.com/claude-code)、[GitHub Copilot](https://code.visualstudio.com/)、[Gemini CLI](https://github.com/google-gemini/gemini-cli)
+- パッケージ管理用 [uv](https://docs.astral.sh/uv/)
 - [Python 3.11+](https://www.python.org/downloads/)
 - [Git](https://git-scm.com/downloads)
 
-## 📖 Learn more
+## 📖 詳しく知る
 
-- **[Complete Spec-Driven Development Methodology](./spec-driven.md)** - Deep dive into the full process
-- **[Detailed Walkthrough](#detailed-process)** - Step-by-step implementation guide
+- **[Spec-Driven Development完全ガイド](./spec-driven.md)** - プロセスの詳細
+- **[詳細な実装手順](#詳細プロセス)** - ステップバイステップのガイド
 
 ---
 
-## Detailed process
+## 詳細プロセス
 
 <details>
-<summary>Click to expand the detailed step-by-step walkthrough</summary>
+<summary>詳細なステップバイステップ手順を表示</summary>
 
-You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:
+Specify CLIを使ってプロジェクトをブートストラップできます。必要なアーティファクトが環境に導入されます。コマンド：
 
 ```bash
 specify init <project_name>
 ```
 
-Or initialize in the current directory:
+カレントディレクトリで初期化：
 
 ```bash
 specify init --here
 ```
 
-![Specify CLI bootstrapping a new project in the terminal](./media/specify_cli.gif)
+![Specify CLIが新規プロジェクトをターミナルでブートストラップ](./media/specify_cli.gif)
 
-You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
+使用するAIエージェントを選択するように促されます。直接指定も可能です：
 
 ```bash
 specify init <project_name> --ai claude
 specify init <project_name> --ai gemini
 specify init <project_name> --ai copilot
-# Or in current directory:
+# カレントディレクトリの場合：
 specify init --here --ai claude
 ```
 
-The CLI will check if you have Claude Code or Gemini CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+CLIはClaude CodeやGemini CLIのインストールを確認します。未インストール、あるいはテンプレートだけ欲しい場合は `--ignore-agent-tools` オプションを追加してください。
 
 ```bash
 specify init <project_name> --ai claude --ignore-agent-tools
 ```
 
-### **STEP 1:** Bootstrap the project
+### **STEP 1:** プロジェクトのブートストラップ
 
-Go to the project folder and run your AI agent. In our example, we're using `claude`.
+プロジェクトフォルダへ移動し、AIエージェントを起動します。ここでは `claude` を例にします。
 
-![Bootstrapping Claude Code environment](./media/bootstrap-claude-code.gif)
+![Claude Code環境のブートストラップ](./media/bootstrap-claude-code.gif)
 
-You will know that things are configured correctly if you see the `/specify`, `/plan`, and `/tasks` commands available.
+`/specify`, `/plan`, `/tasks` コマンドが使える状態になっていれば設定成功です。
 
-The first step should be creating a new project scaffolding. Use `/specify` command and then provide the concrete requirements for the project you want to develop.
+まずはプロジェクトの足場を作成します。`/specify` コマンドで具体的な要件を入力しましょう。
 
 >[!IMPORTANT]
->Be as explicit as possible about _what_ you are trying to build and _why_. **Do not focus on the tech stack at this point**.
+>「何を」「なぜ」作りたいのかを明確に記述しましょう。**技術スタックにはこの段階で触れないでください。**
 
-An example prompt:
+入力例：
 
 ```text
-Develop Taskify, a team productivity platform. It should allow users to create projects, add team members,
-assign tasks, comment and move tasks between boards in Kanban style. In this initial phase for this feature,
-let's call it "Create Taskify," let's have multiple users but the users will be declared ahead of time, predefined.
-I want five users in two different categories, one product manager and four engineers. Let's create three
-different sample projects. Let's have the standard Kanban columns for the status of each task, such as "To Do,"
-"In Progress," "In Review," and "Done." There will be no login for this application as this is just the very
-first testing thing to ensure that our basic features are set up. For each task in the UI for a task card,
-you should be able to change the current status of the task between the different columns in the Kanban work board.
-You should be able to leave an unlimited number of comments for a particular card. You should be able to, from that task
-card, assign one of the valid users. When you first launch Taskify, it's going to give you a list of the five users to pick
-from. There will be no password required. When you click on a user, you go into the main view, which displays the list of
-projects. When you click on a project, you open the Kanban board for that project. You're going to see the columns.
-You'll be able to drag and drop cards back and forth between different columns. You will see any cards that are
-assigned to you, the currently logged in user, in a different color from all the other ones, so you can quickly
-see yours. You can edit any comments that you make, but you can't edit comments that other people made. You can
-delete any comments that you made, but you can't delete comments anybody else made.
+Taskifyというチーム生産性プラットフォームを開発したい。ユーザーはプロジェクト作成・メンバー追加・タスク割り当て・コメント・タスクをカンバンで移動可能。初期ではユーザーは事前定義、5人（1人プロダクトマネージャ・4人エンジニア）、3つのサンプルプロジェクト。カンバンは「To Do」「In Progress」「In Review」「Done」。ログイン不要。UI上でタスクカードの状態変更、コメント追加・編集・削除（自分のみ）、タスクの担当割り当て。色分けで自分のタスク判別。プロジェクト選択後、カンバン表示。ドラッグ＆ドロップでカード移動可能。他人のコメントは編集・削除不可。
 ```
 
-After this prompt is entered, you should see Claude Code kick off the planning and spec drafting process. Claude Code will also trigger some of the built-in scripts to set up the repository.
+このプロンプト入力後、Claude Codeがプランニングや仕様作成を開始します。ビルトインスクリプトでリポジトリ設定も行われます。
 
-Once this step is completed, you should have a new branch created (e.g., `001-create-taskify`), as well as a new specification in the `specs/001-create-taskify` directory.
+完了すると新しいブランチ（例：`001-create-taskify`）と、`specs/001-create-taskify` ディレクトリに仕様書が作成されます。
 
-The produced specification should contain a set of user stories and functional requirements, as defined in the template.
-
-At this stage, your project folder contents should resemble the following:
+この時点でのプロジェクトフォルダ例：
 
 ```text
 ├── memory
@@ -216,35 +199,31 @@ At this stage, your project folder contents should resemble the following:
     └── tasks-template.md
 ```
 
-### **STEP 2:** Functional specification clarification
+### **STEP 2:** 機能仕様の明確化
 
-With the baseline specification created, you can go ahead and clarify any of the requirements that were not captured properly within the first shot attempt. For example, you could use a prompt like this within the same Claude Code session:
-
-```text
-For each sample project or project that you create there should be a variable number of tasks between 5 and 15
-tasks for each one randomly distributed into different states of completion. Make sure that there's at least
-one task in each stage of completion.
-```
-
-You should also ask Claude Code to validate the **Review & Acceptance Checklist**, checking off the things that are validated/pass the requirements, and leave the ones that are not unchecked. The following prompt can be used:
+ベース仕様作成後、抜け漏れ要件を明確化できます。例：
 
 ```text
-Read the review and acceptance checklist, and check off each item in the checklist if the feature spec meets the criteria. Leave it empty if it does not.
+各サンプルプロジェクトには5～15個のタスクをランダムに割り振り、すべての進行状態に最低1つずつタスクが存在するようにしてください。
 ```
 
-It's important to use the interaction with Claude Code as an opportunity to clarify and ask questions around the specification - **do not treat its first attempt as final**.
-
-### **STEP 3:** Generate a plan
-
-You can now be specific about the tech stack and other technical requirements. You can use the `/plan` command that is built into the project template with a prompt like this:
+Claude Codeに**レビュー＆受入チェックリスト**の検証も依頼できます。
 
 ```text
-We are going to generate this using .NET Aspire, using Postgres as the database. The frontend should use
-Blazor server with drag-and-drop task boards, real-time updates. There should be a REST API created with a projects API,
-tasks API, and a notifications API.
+レビュー＆受入チェックリストを読み、仕様が満たしていればチェックを入れてください。満たしていない場合は空欄のままにしてください。
 ```
 
-The output of this step will include a number of implementation detail documents, with your directory tree resembling this:
+初回仕様は確定ではありません。Claude Codeとのやり取りで積極的に質問・明確化しましょう。
+
+### **STEP 3:** プランの生成
+
+ここで技術スタックや詳細要件を明示します。`/plan` コマンド例：
+
+```text
+.NET Aspireを使用し、データベースはPostgres。フロントエンドはBlazorサーバー、ドラッグ＆ドロップ対応、リアルタイム更新。REST APIでプロジェクト・タスク・通知を管理。
+```
+
+この段階でディレクトリは下記のようになります：
 
 ```text
 .
@@ -276,103 +255,87 @@ The output of this step will include a number of implementation detail documents
     └── tasks-template.md
 ```
 
-Check the `research.md` document to ensure that the right tech stack is used, based on your instructions. You can ask Claude Code to refine it if any of the components stand out, or even have it check the locally-installed version of the platform/framework you want to use (e.g., .NET).
+`research.md` に技術スタックの調査内容が反映されているか確認しましょう。必要ならClaude Codeに修正依頼できます。
 
-Additionally, you might want to ask Claude Code to research details about the chosen tech stack if it's something that is rapidly changing (e.g., .NET Aspire, JS frameworks), with a prompt like this:
+技術スタックが急速に変化する場合は追加調査の依頼も推奨です：
 
 ```text
-I want you to go through the implementation plan and implementation details, looking for areas that could
-benefit from additional research as .NET Aspire is a rapidly changing library. For those areas that you identify that
-require further research, I want you to update the research document with additional details about the specific
-versions that we are going to be using in this Taskify application and spawn parallel research tasks to clarify
-any details using research from the web.
+.NET Aspireのような急速に進化するライブラリについては、実装計画や詳細ファイル内で追加調査が必要な部分を特定し、対応するリサーチタスクを並列で展開してください。Taskifyに使用するバージョンなど、具体的な情報をresearch.mdに追記してください。
 ```
 
-During this process, you might find that Claude Code gets stuck researching the wrong thing - you can help nudge it in the right direction with a prompt like this:
+Claude Codeが的外れな調査をした場合は、下記のように修正を促しましょう：
 
 ```text
-I think we need to break this down into a series of steps. First, identify a list of tasks
-that you would need to do during implementation that you're not sure of or would benefit
-from further research. Write down a list of those tasks. And then for each one of these tasks,
-I want you to spin up a separate research task so that the net results is we are researching
-all of those very specific tasks in parallel. What I saw you doing was it looks like you were
-researching .NET Aspire in general and I don't think that's gonna do much for us in this case.
-That's way too untargeted research. The research needs to help you solve a specific targeted question.
+まず実装時に不明点・追加調査が必要なタスクをリストアップし、それぞれ並列にリサーチタスクを展開してください。一般的な.NET Aspire情報の調査ではなく、課題解決に直結する具体的な調査が必要です。
 ```
 
 >[!NOTE]
->Claude Code might be over-eager and add components that you did not ask for. Ask it to clarify the rationale and the source of the change.
+>Claude Codeが余計なコンポーネントを追加することもあるので、理由や変更の根拠を確認しましょう。
 
-### **STEP 4:** Have Claude Code validate the plan
+### **STEP 4:** プランの検証
 
-With the plan in place, you should have Claude Code run through it to make sure that there are no missing pieces. You can use a prompt like this:
+プラン完成後、Claude Codeに内容監査を依頼しましょう：
 
 ```text
-Now I want you to go and audit the implementation plan and the implementation detail files.
-Read through it with an eye on determining whether or not there is a sequence of tasks that you need
-to be doing that are obvious from reading this. Because I don't know if there's enough here. For example,
-when I look at the core implementation, it would be useful to reference the appropriate places in the implementation
-details where it can find the information as it walks through each step in the core implementation or in the refinement.
+実装計画と詳細ファイルを監査し、明らかに実施すべきタスクの抜け漏れがないか確認してください。各ステップに関連する詳細情報への参照も付けてください。
 ```
 
-This helps refine the implementation plan and helps you avoid potential blind spots that Claude Code missed in its planning cycle. Once the initial refinement pass is complete, ask Claude Code to go through the checklist once more before you can get to the implementation.
-
-You can also ask Claude Code (if you have the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli) installed) to go ahead and create a pull request from your current branch to `main` with a detailed description, to make sure that the effort is properly tracked.
+これで計画の精度が高まり、見落としを防げます。初回の洗練後は、Claude Codeに「過剰設計」箇所の確認も依頼しましょう。
 
 >[!NOTE]
->Before you have the agent implement it, it's also worth prompting Claude Code to cross-check the details to see if there are any over-engineered pieces (remember - it can be over-eager). If over-engineered components or decisions exist, you can ask Claude Code to resolve them. Ensure that Claude Code follows the [constitution](base/memory/constitution.md) as the foundational piece that it must adhere to when establishing the plan.
+>実装前に過剰設計部分の有無も要確認です。
 
-### STEP 5: Implementation
+### STEP 5: 実装
 
-Once ready, instruct Claude Code to implement your solution (example path included):
+準備ができたらClaude Codeに実装を指示します（例）：
 
 ```text
 implement specs/002-create-taskify/plan.md
 ```
 
-Claude Code will spring into action and will start creating the implementation.
+Claude Codeが自動で実装を進めます。
 
 >[!IMPORTANT]
->Claude Code will execute local CLI commands (such as `dotnet`) - make sure you have them installed on your machine.
+>Claude CodeはローカルCLIコマンド（dotnet等）を実行するため、事前にインストールしておいてください。
 
-Once the implementation step is done, ask Claude Code to try to run the application and resolve any emerging build errors. If the application runs, but there are _runtime errors_ that are not directly available to Claude Code through CLI logs (e.g., errors rendered in browser logs), copy and paste the error in Claude Code and have it attempt to resolve it.
+実装完了後はアプリ実行＆ビルドエラー対応を依頼しましょう。実行可能でもランタイムエラーが発生する場合は、追加で修正を依頼してください。
 
 </details>
 
 ---
 
-## Troubleshooting
+## トラブルシューティング
 
-### Git Credential Manager on Linux
+### LinuxでのGit Credential Manager
 
-If you're having issues with Git authentication on Linux, you can install Git Credential Manager:
+LinuxでGit認証に問題がある場合は以下でインストール可能です：
 
 ```bash
 #!/bin/bash
 set -e
-echo "Downloading Git Credential Manager v2.6.1..."
+echo "Git Credential Manager v2.6.1のダウンロード中..."
 wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.6.1/gcm-linux_amd64.2.6.1.deb
-echo "Installing Git Credential Manager..."
+echo "Git Credential Managerのインストール中..."
 sudo dpkg -i gcm-linux_amd64.2.6.1.deb
-echo "Configuring Git to use GCM..."
+echo "Gitの認証ヘルパーをmanagerに設定中..."
 git config --global credential.helper manager
-echo "Cleaning up..."
+echo "後処理中..."
 rm gcm-linux_amd64.2.6.1.deb
 ```
 
-## Maintainers
+## メンテナー
 
 - Den Delimarsky ([@localden](https://github.com/localden))
 - John Lam ([@jflam](https://github.com/jflam))
 
-## Support
+## サポート
 
-For support, please open a [GitHub issue](https://github.com/github/spec-kit/issues/new). We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
+サポートが必要な場合は[GitHub Issue](https://github.com/github/spec-kit/issues/new)を作成してください。バグ報告・機能要望・Spec-Driven Developmentの利用質問を歓迎します。
 
-## Acknowledgements
+## 謝辞
 
-This project is heavily influenced by and based on the work and research of [John Lam](https://github.com/jflam).
+本プロジェクトは[John Lam](https://github.com/jflam)の研究成果に大きく基づいています。
 
-## License
+## ライセンス
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) file for the full terms.
+本プロジェクトはMITライセンスで公開されています。詳細は[LICENSE](./LICENSE)ファイルをご参照ください。
